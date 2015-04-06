@@ -1,0 +1,27 @@
+h1 {{title}}
+p {{'In ' + how(10,4) + ' hours'}}
+input(type="text" ng-model="handle")
+input(type="text" ng-model="handle")
+p I am {{handle}}
+.alert(ng-class="{'alert-warning':handle.length < characters,'alert-danger':handle.length > characters,'alert-success':handle.length === characters}",)
+  p(ng-show="handle.length < characters") You have less 5 characters.
+  p(ng-show="handle.length > characters") You have more than 5 characters
+  p(ng-if="handle.length === characters") You have the right amount of characters
+
+p {{kevin.firstName}}
+p {{kevin.lastName}}
+p {{kevin.email}}
+p {{kevin.phoneNumber}}
+div(ng-repeat="xman in teams.x_men.characters",style="width:33.33%;float:left;margin:0;padding:0;display:block;")
+  h3 {{xman.name}}
+  img(ng-src="{{xman.image.large}}",style="width:100%;display:block;")
+  p
+    strong {{xman.real_name}}
+    br
+    em {{xman.aliases}}
+  p {{xman.deck}}
+h3 {{index}}
+p
+  em {{aliases}}
+p {{team.characters[0].deck}}
+

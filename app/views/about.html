@@ -1,0 +1,23 @@
+
+<h1>{{title}}</h1>
+<p>{{'In ' + how(10,4) + ' hours'}}</p>
+<input type="text" ng-model="handle"/>
+<input type="text" ng-model="handle"/>
+<p>I am {{handle}}</p>
+<div ng-class="{'alert-warning':handle.length &lt; characters,'alert-danger':handle.length &gt; characters,'alert-success':handle.length === characters}" class="alert">
+  <p ng-show="handle.length &lt; characters">You have  less 5 characters</p>
+  <p ng-show="handle.length &gt; characters">You have more than 5 characters</p>
+  <p ng-if="handle.length === characters">You have the right amount of characters</p>
+</div>
+<p>{{kevin.firstName}}</p>
+<p>{{kevin.lastName}}</p>
+<p>{{kevin.email}}</p>
+<p>{{kevin.phoneNumber}}</p>
+<div ng-repeat="xman in teams.x_men.characters" style="width:33.33%;float:left;margin:0;padding:0;display:block;">
+  <h3>{{xman.name}}</h3><img ng-src="{{xman.image.large}}" style="width:100%;display:block;"/>
+  <p><strong>{{xman.real_name}}</strong><br/><em>{{xman.aliases}}</em></p>
+  <p>{{xman.deck}}</p>
+</div>
+<h3>{{index}}</h3>
+<p><em>{{aliases}}</em></p>
+<p>{{team.characters[0].deck}}</p>
