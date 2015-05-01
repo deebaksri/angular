@@ -1,6 +1,8 @@
 
 <h1>{{title}}</h1>
 <p ng-click="clicked()">CLicked</p>
-<div id="memory_board">test
-  <p>retest</p>
+<div id="memory_board">
+  <div ng-repeat="tile in tiles track by $index" id="{{tile}}_{{$index}}" ng-click="memoryFlipTile(tile);">
+    <div ng-click="memoryFlipTile($index,tile)"></div>
+  </div>
 </div>

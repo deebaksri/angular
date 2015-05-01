@@ -33,6 +33,14 @@ var mainAngularApp = angular.module('angularApp', [
         templateUrl: 'views/memory-game.html',
         controller: 'mvMemoryGame'
       })
+      .when('/memory-game-no-angular', {
+        templateUrl: 'views/memory-game-no-angular.html'
+
+      })
+      .when('/xmen-prototype', {
+        templateUrl: 'views/xmen-prototype.html'
+
+      })
       .otherwise({
         redirectTo: '/'
       });

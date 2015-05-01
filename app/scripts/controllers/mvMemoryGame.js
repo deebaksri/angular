@@ -1,10 +1,11 @@
 'use strict';
+
 mainAngularApp.controller('mvMemoryGame', function($scope,$log) {
   $scope.title = 'Memory Game';
   var memoryArray = ['Professeur X', 'Cyclope', 'Iceberg', 'Angel', 'Strange Girl', 'Mimic', 'Miméto', 'Polaris', 'Havok', 'Diablo', 'Wolverine', 'Hurleur', 'Tornade', 'Feu du Soleil', 'Colossus', 'Épervier', 'Shadowcat', 'Lockheed', 'Malicia', 'Rachel Summers', 'Magneto', 'Psylocke', 'Dazzler', 'Longshot', 'Forge', 'Gambit', 'Jubilé', 'Bishop', 'Revanche', 'Rocket', 'Joseph', 'Cecilia Reyes', 'Marrow', 'Maggott', 'Professeur X', 'Cyclope', 'Iceberg', 'Angel', 'Strange Girl', 'Mimic', 'Miméto', 'Polaris', 'Havok', 'Diablo', 'Wolverine', 'Hurleur', 'Tornade', 'Feu du Soleil', 'Colossus', 'Épervier', 'Shadowcat', 'Lockheed', 'Malicia', 'Rachel Summers', 'Magneto', 'Psylocke', 'Dazzler', 'Longshot', 'Forge', 'Gambit', 'Jubilé', 'Bishop', 'Revanche', 'Rocket', 'Joseph', 'Cecilia Reyes', 'Marrow', 'Maggott'];
-  var memoryValues = [];
-  var memoryTileIds = [];
-  var tilesFlipped = 0;
+  $scope.memoryValues = [];
+  $scope.memoryTileIds = [];
+  $scope.tilesFlipped = 0;
 
   Array.prototype.memoryTileShuffle = function() {
     var i = this.length,
@@ -16,38 +17,35 @@ mainAngularApp.controller('mvMemoryGame', function($scope,$log) {
       this[i] = temp;
     }
   };
-
+  $scope.tiles = memoryArray;
   $scope.newBoard = function() {
-    tilesFlipped = 0;
-    var output = '';
+    $scope.tilesFlipped = 0;
     memoryArray.memoryTileShuffle();
-    for (var i = 0; i < memoryArray.length; i++) {
-      output += '<div id="title_' + i + '" ng-click="mvMemoryGame.memoryFlipTile(this,\'' + memoryArray[i] + '\')"></div>';
-    }
-    document.getElementById('memory_board').innerHTML = output;
+    //document.getElementById('memory_board').innerHTML = $scope.output;
   };
 
   $scope.clicked = function(){
     $log.log('clicked');
   };
   $scope.memoryFlipTile = function(tile, val) {
-    $log.log('clicked');
-    if (tile.innerHTML === '' && memoryValues.length < 2) {
-      tile.style.background = '#FFF';
+    $log.log(tile);
+
+    if (tile === '' &&     $scope.memoryValues.length < 2) {
+      $(this).style.background = '#FFF';
       tile.innerHTML = val;
-      if (memoryValues.length === 0) {
-        memoryValues.push(val);
-        memoryTileIds.push(tile.id);
-      } else if (memoryValues.length === 1) {
-        memoryValues.push(val);
-        memoryTileIds.push(tile.id);
-        if (memoryValues[0] === memoryValues[1]) {
-          tilesFlipped += 2;
+      if (    $scope.memoryValues.length === 0) {
+            $scope.memoryValues.push(val);
+            $scope.memoryTileIds.push(tile.id);
+      } else if (    $scope.memoryValues.length === 1) {
+            $scope.memoryValues.push(val);
+            $scope.memoryTileIds.push(tile.id);
+        if (tile[0] === tile[1]) {
+              $scope.tilesFlipped += 2;
           // Clear both arrays
-          memoryValues = [];
-          memoryTileIds = [];
+              $scope.memoryValues = [];
+              $scope.memoryTileIds = [];
           // Check to see if the whole board is cleared
-          if (tilesFlipped === memoryArray.length) {
+          if (    $scope.tilesFlipped === memoryArray.length) {
 
             document.getElementById('memory_board').innerHTML = '';
             newBoard();

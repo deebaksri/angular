@@ -1,5 +1,7 @@
 h1 {{title}}
 p(ng-click="clicked()") CLicked
-div#memory_board
-  | test
-  p retest
+div#memory_board()
+
+  div(ng-repeat="tile in tiles track by $index",id="{{tile}}_{{$index}}",ng-click="memoryFlipTile(tile);")
+    div(ng-click='memoryFlipTile($index,tile)')
+
